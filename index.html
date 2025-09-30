@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ИБ | лаб | 3</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Алгоритм шифрования RSA</h1>
+      <h2>Генерация ключей</h2>
+      <div class="input-section" id="inputSection">
+        <div class="step">
+          <h3>1) Выбираем два случайных простых числа p и q.</h3>
+          <label for="pValue"
+            >p =
+            <select name="pValue" id="pValue"></select
+          ></label>
+          <label for="qValue"
+            >q =
+            <select name="qValue" id="qValue"></select
+          ></label>
+
+          <div class="warning visible">p и q не должны быть равны</div>
+        </div>
+
+        <div class="step">
+          <h3>2) Вычисляем их произведение: N = p * q.</h3>
+          <label for="nValue">
+            N =
+            <textarea name="nValue" id="nValue" readonly="true"></textarea>
+          </label>
+        </div>
+
+        <div class="step">
+          <h3>3) Вычисляем функцию Эйлера: φ(N) = (p-1) * (q-1).</h3>
+          <label for="phiValue">
+            φ(n) =
+            <textarea name="phiValue" id="phiValue" readonly="true"></textarea>
+          </label>
+        </div>
+
+        <div class="step">
+          <h3>
+            4) Выбираем число d, которое меньше φ(N) и является взаимно простым
+            с φ(N) (не имеющих общих делителей друг с другом, кроме 1).
+          </h3>
+          <label for="dValue"
+            >d =
+            <select name="dValue" id="dValue"></select
+          ></label>
+        </div>
+
+        <div class="step">
+          <h3>
+            5) Ищем число e, обратное числу d по модулю φ(N), т.е. остаток от
+            деления (e*d) и φ(N) должен быть равен 1. Найти его можно через
+            расширенный алгоритм Евклида.
+          </h3>
+          <label for="eValue"
+            >e =
+            <textarea name="eValue" id="eValue" readonly="true"></textarea>
+          </label>
+        </div>
+
+        <div class="step">
+          <h3>6) Получаем ключи</h3>
+          <label for="publicKey"
+            >открытый:
+            <textarea
+              name="publicKey"
+              id="publicKey"
+              readonly="true"
+            ></textarea>
+          </label>
+          <label for="privateKey"
+            >закрытый:
+            <textarea
+              name="privateKey"
+              id="privateKey"
+              readonly="true"
+            ></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="result" id="result"></div>
+    </div>
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
