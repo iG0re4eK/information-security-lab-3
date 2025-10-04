@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="side-menu">
+      <nav class="nav-menu">
+        <ul class="list-menu">
+          <li><a href="#generationKeys">Генерация ключей</a></li>
+          <li><a href="#encryptSection">Шифрование</a></li>
+          <li><a href="#dencryptSection">Дешифрование</a></li>
+        </ul>
+      </nav>
+    </div>
     <div class="container">
       <h1>Алгоритм шифрования RSA</h1>
-      <h2>Генерация ключей</h2>
+      <h2 id="generationKeys">Генерация ключей</h2>
       <div class="input-section" id="inputSection">
         <div class="step">
           <h3>1) Выбираем два случайных простых числа p и q.</h3>
@@ -84,7 +93,43 @@
           </label>
         </div>
       </div>
-      <div class="result" id="result"></div>
+      <h2 id="encryptSection">Шифрование</h2>
+      <div class="input-section">
+        <div class="group">
+          <input type="text" id="encryptInput" />
+          <button id="encryptButton">Шифровать</button>
+        </div>
+        <div class="list-iteration">
+          <div class="table-iteration" id="encryptIteration"></div>
+        </div>
+        <div class="result">
+          <label for="encryptResult">Зашифрованное сообщение:</label>
+          <textarea
+            name="encryptResult"
+            id="encryptResult"
+            readonly="true"
+          ></textarea>
+        </div>
+      </div>
+      <h2 id="dencryptSection">Дешифрование</h2>
+      <div class="input-section">
+        <div class="group">
+          <input type="text" id="dencryptInput" />
+          <button id="dencryptButton">Дешифровать</button>
+        </div>
+        <div class="list-iteration">
+          <div class="table-iteration" id="dencryptIteration"></div>
+        </div>
+        <div class="result">
+          <label for="dencryptResult">Дешифрованное сообщение:</label>
+
+          <textarea
+            name="dencryptResult"
+            id="dencryptResult"
+            readonly="true"
+          ></textarea>
+        </div>
+      </div>
     </div>
     <script src="./js/main.js" type="module"></script>
   </body>
