@@ -76,23 +76,22 @@ function sumMod(section, a, x, n, char) {
   const tables = section.querySelectorAll("table");
 
   let p = 1;
-  let a_k = a % n;
   let i = x;
-  let k = 1;
+
+  let k = 0;
 
   while (i > 0) {
     const s = i % 2;
-    createEncryptTable(tables[tables.length - 1], [k, a_k, i, s, p]);
 
     if (s === 1) {
-      p = (p * a_k) % n;
+      p = (p * a) % n;
     }
-    a_k = (a_k * a_k) % n;
-    i = Math.floor(i / 2);
+    createEncryptTable(tables[tables.length - 1], [k + 1, a, i, s, p]);
+    a = (a * a) % n;
+    i = Math.floor((i - s) / 2);
     k++;
   }
 
-  createEncryptTable(tables[tables.length - 1], [k, a_k, i, 0, p]);
   return p;
 }
 

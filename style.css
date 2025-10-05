@@ -251,6 +251,20 @@ h3 {
     tr:nth-child(odd) {
       background-color: #e2e7ff;
     }
+
+    tr:nth-child(3) {
+      td:nth-child(2) {
+        background-color: rgb(231, 255, 247);
+        color: #000939;
+      }
+    }
+
+    tr:last-child {
+      td:last-child {
+        background-color: aquamarine;
+        color: #000939;
+      }
+    }
   }
 }
 
