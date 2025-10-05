@@ -110,7 +110,7 @@ function sumMod(section, a, x, n, char) {
     if (s === 1) {
       p = (p * a) % n;
     }
-    createEncryptTable(tables[tables.length - 1], [k + 1, a, i, s, p]);
+    createCryptTable(tables[tables.length - 1], [k + 1, a, i, s, p]);
     a = (a * a) % n;
     i = Math.floor((i - s) / 2);
     k++;
@@ -171,7 +171,7 @@ function createTable(section, elements, letter) {
   section.appendChild(table);
 }
 
-function createEncryptTable(table, elements) {
+function createCryptTable(table, elements) {
   const tr = document.createElement("tr");
   elements.forEach((el) => {
     const td = document.createElement("td");

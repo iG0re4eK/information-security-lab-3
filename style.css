@@ -6,6 +6,7 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -312,5 +313,16 @@ h3 {
 
   .alphabet-pairs {
     grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 750px;
+  }
+
+  .alphabet-pairs {
+    margin-right: 18rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
