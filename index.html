@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="side-menu">
+    <div class="side-menu" id="sideMenu">
       <nav class="nav-menu">
         <ul class="list-menu">
-          <li><a href="#alphabet">Алфавит</a></li>
-          <li><a href="#generationKeys">Генерация ключей</a></li>
-          <li><a href="#encryptSection">Шифрование</a></li>
-          <li><a href="#dencryptSection">Дешифрование</a></li>
+          <li><a class="item-menu active" href="#alphabet">Алфавит</a></li>
+          <li>
+            <a class="item-menu" href="#generationKeys">Генерация ключей</a>
+          </li>
+          <li><a class="item-menu" href="#encryptSection">Шифрование</a></li>
+          <li><a class="item-menu" href="#dencryptSection">Дешифрование</a></li>
         </ul>
       </nav>
     </div>
@@ -62,9 +64,6 @@
             >d =
             <select name="dValue" id="dValue"></select
           ></label>
-          <div class="list-iteration">
-            <div class="table-iteration" id="gcdIteration"></div>
-          </div>
         </div>
 
         <div class="step">
@@ -77,9 +76,6 @@
             >e =
             <textarea name="eValue" id="eValue" readonly="true"></textarea>
           </label>
-          <div class="list-iteration">
-            <div class="table-iteration" id="modInverseIteration"></div>
-          </div>
         </div>
 
         <div class="step">

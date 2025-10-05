@@ -44,7 +44,7 @@ body {
         height: 3rem;
         transition: color 0.2s;
 
-        a {
+        .item-menu {
           background-color: rgb(71, 85, 141);
           border-radius: 0.2rem;
           height: 100%;
@@ -60,7 +60,13 @@ body {
           transition: 0.2s ease-in-out;
         }
 
-        a:hover {
+        .item-menu:hover {
+          color: rgb(255, 174, 0);
+          background-color: rgb(122, 138, 201);
+          transform: translateX(4px);
+        }
+
+        .item-menu.active {
           color: rgb(255, 174, 0);
           background-color: rgb(122, 138, 201);
           transform: translateX(4px);
@@ -68,12 +74,6 @@ body {
       }
     }
   }
-}
-
-.active-anchore {
-  color: rgb(255, 174, 0);
-  background-color: rgb(122, 138, 201);
-  transform: translateX(4px);
 }
 
 .warning {
@@ -270,6 +270,8 @@ h3 {
 }
 
 .alphabet-pairs {
+  height: 100vh;
+  padding-bottom: 40rem;
   display: grid;
   grid-template-columns: repeat(28, 1fr);
   margin: 5rem auto;
@@ -317,12 +319,9 @@ h3 {
 }
 
 @media (max-width: 800px) {
-  .container {
-    width: 750px;
-  }
-
   .alphabet-pairs {
-    margin-right: 18rem;
+    margin-right: 4rem;
+    padding-bottom: 100rem;
     grid-template-columns: repeat(4, 1fr);
   }
 }

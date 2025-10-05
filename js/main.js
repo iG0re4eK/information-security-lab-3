@@ -1,5 +1,6 @@
 const alphabetSection = document.getElementById("alphabetSection");
 const inputSection = document.getElementById("inputSection");
+const sideMenu = document.getElementById("sideMenu");
 const result = document.getElementById("result");
 const pValue = document.getElementById("pValue");
 const qValue = document.getElementById("qValue");
@@ -50,6 +51,21 @@ function loadLetter(container) {
 
 loadLetter(alphabetSection);
 
+function updateActiveMenu() {
+  const sections = document.querySelectorAll("h2");
+  const links = sideMenu.querySelectorAll(".item-menu");
+
+  sections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top < window.innerHeight) {
+      links.forEach((link) => link.classList.remove("active"));
+      links[index].classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", updateActiveMenu);
+
 function isPrimeArray() {
   let result = [];
   for (let i = 7; i < 100; i++) {
@@ -70,6 +86,7 @@ function isPrime(num) {
 
 function isGcdArray(phi) {
   let result = [];
+
   for (let d = phi - 1; d > 1; d--) {
     if (gcd(d, phi) === 1) {
       result.push(d);
@@ -96,7 +113,7 @@ function modInverse(d, phi) {
 }
 
 function sumMod(section, a, x, n, char) {
-  createTable(section, ["k", `a<sub>k</sub>`, "i", "s", "p"], char);
+  createCryptTable(section, ["k", `a<sub>k</sub>`, "i", "s", "p"], char);
   const tables = section.querySelectorAll("table");
 
   let p = 1;
@@ -110,7 +127,7 @@ function sumMod(section, a, x, n, char) {
     if (s === 1) {
       p = (p * a) % n;
     }
-    createCryptTable(tables[tables.length - 1], [k + 1, a, i, s, p]);
+    createHeaderCryptTable(tables[tables.length - 1], [k + 1, a, i, s, p]);
     a = (a * a) % n;
     i = Math.floor((i - s) / 2);
     k++;
@@ -144,8 +161,6 @@ function dencryptOperation(str, d, n) {
 
   let result = "";
   for (const i of temp) {
-    console.log(i);
-
     if (typeof i === "number" && i > 0 && i <= rusAlpha.length) {
       result += rusAlpha[i - 1];
     } else {
@@ -155,7 +170,17 @@ function dencryptOperation(str, d, n) {
   return result;
 }
 
-function createTable(section, elements, letter) {
+function createHeaderCryptTable(table, elements) {
+  const tr = document.createElement("tr");
+  elements.forEach((el) => {
+    const td = document.createElement("td");
+    td.innerHTML = el;
+    tr.appendChild(td);
+  });
+  table.appendChild(tr);
+}
+
+function createCryptTable(section, elements, letter) {
   const table = document.createElement("table");
   const thLetter = document.createElement("th");
   thLetter.innerHTML = `${letter}`;
@@ -169,16 +194,6 @@ function createTable(section, elements, letter) {
   table.appendChild(thLetter);
   table.appendChild(tr);
   section.appendChild(table);
-}
-
-function createCryptTable(table, elements) {
-  const tr = document.createElement("tr");
-  elements.forEach((el) => {
-    const td = document.createElement("td");
-    td.innerHTML = el;
-    tr.appendChild(td);
-  });
-  table.appendChild(tr);
 }
 
 primeArray = isPrimeArray();
@@ -243,7 +258,6 @@ function solveFirst() {
 
 function solveSecond() {
   if (pEquelQ()) return;
-  console.log(dValue.value);
 
   eValue.value = modInverse(dValue.value, phiValue.value);
   publicKey.value = `{${eValue.value}; ${nValue.value}}`;
