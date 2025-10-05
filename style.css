@@ -309,4 +309,8 @@ h3 {
   .container {
     width: 850px;
   }
+
+  .alphabet-pairs {
+    grid-template-columns: repeat(8, 1fr);
+  }
 }
