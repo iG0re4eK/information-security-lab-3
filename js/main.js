@@ -1,3 +1,4 @@
+const alphabetSection = document.getElementById("alphabetSection");
 const inputSection = document.getElementById("inputSection");
 const result = document.getElementById("result");
 const pValue = document.getElementById("pValue");
@@ -25,6 +26,29 @@ let gcdArray = [];
 
 const rusAlpha =
   "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя ";
+
+function loadLetter(container) {
+  container.innerHTML = "";
+
+  for (let i = 0; i < rusAlpha.length; i++) {
+    const pair = document.createElement("div");
+    pair.classList.add("pair");
+
+    const letterPrime = document.createElement("div");
+    letterPrime.classList.add("letter");
+    letterPrime.innerHTML = rusAlpha[i];
+
+    const letterResult = document.createElement("div");
+    letterResult.classList.add("letter");
+    letterResult.innerHTML = i + 1;
+
+    pair.appendChild(letterPrime);
+    pair.appendChild(letterResult);
+    container.appendChild(pair);
+  }
+}
+
+loadLetter(alphabetSection);
 
 function isPrimeArray() {
   let result = [];

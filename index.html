@@ -10,6 +10,7 @@
     <div class="side-menu">
       <nav class="nav-menu">
         <ul class="list-menu">
+          <li><a href="#alphabet">Алфавит</a></li>
           <li><a href="#generationKeys">Генерация ключей</a></li>
           <li><a href="#encryptSection">Шифрование</a></li>
           <li><a href="#dencryptSection">Дешифрование</a></li>
@@ -18,6 +19,8 @@
     </div>
     <div class="container">
       <h1>Алгоритм шифрования RSA</h1>
+      <h2 id="alphabet">Алфавит</h2>
+      <div class="alphabet-pairs" id="alphabetSection"></div>
       <h2 id="generationKeys">Генерация ключей</h2>
       <div class="input-section" id="inputSection">
         <div class="step">
@@ -59,6 +62,9 @@
             >d =
             <select name="dValue" id="dValue"></select
           ></label>
+          <div class="list-iteration">
+            <div class="table-iteration" id="gcdIteration"></div>
+          </div>
         </div>
 
         <div class="step">
@@ -71,6 +77,9 @@
             >e =
             <textarea name="eValue" id="eValue" readonly="true"></textarea>
           </label>
+          <div class="list-iteration">
+            <div class="table-iteration" id="modInverseIteration"></div>
+          </div>
         </div>
 
         <div class="step">

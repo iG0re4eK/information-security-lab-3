@@ -203,20 +203,20 @@ h3 {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-left: 1rem;
 
   table {
     text-align: center;
     width: 400px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-collapse: collapse;
     border-radius: 0.5rem;
     overflow: hidden;
     color: rgb(14, 0, 78);
+    box-shadow: 0 0 10px rgba(0, 1, 60, 0.308);
 
     .caption {
       margin: 1rem auto;
       text-align: center;
-      background-color: aqua;
       width: 100%;
     }
 
@@ -249,23 +249,60 @@ h3 {
     }
 
     tr:nth-child(odd) {
-      background-color: #e2e7ff;
+      background-color: #d3daff;
     }
 
     tr:nth-child(3) {
       td:nth-child(2) {
-        background-color: rgb(231, 255, 247);
+        background-color: rgb(255, 219, 166);
         color: #000939;
       }
     }
 
     tr:last-child {
       td:last-child {
-        background-color: aquamarine;
-        color: #000939;
+        background-color: rgb(255, 153, 36);
+        color: #ffffff;
       }
     }
   }
+}
+
+.alphabet-pairs {
+  display: grid;
+  grid-template-columns: repeat(28, 1fr);
+  margin: 5rem auto;
+  gap: 0.2rem;
+}
+
+.pair {
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  background-color: rgb(65, 72, 123);
+  font-size: 1rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.letter {
+  color: rgb(229, 229, 229);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  flex: 1;
+}
+
+.pair::after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 1200px) {
