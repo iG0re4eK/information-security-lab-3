@@ -68,7 +68,7 @@ window.addEventListener("scroll", updateActiveMenu);
 
 function isPrimeArray() {
   let result = [];
-  for (let i = 7; i < 100; i++) {
+  for (let i = 0; i < 100; i++) {
     if (isPrime(i)) {
       result.push(i);
     }
@@ -219,12 +219,27 @@ function pEquelQ() {
   const step = inputSection.querySelectorAll(".step");
   const warning = step[0].querySelector(".warning");
 
-  if (pValue.value !== qValue.value) {
-    warning.classList.add("visible");
+  warning.textContent = "";
+
+  if (pValue.value === qValue.value) {
+    warning.textContent = "p и q не должны быть равны";
     return false;
   }
 
-  warning.classList.remove("visible");
+  return true;
+}
+
+function alphabetSize() {
+  const step = inputSection.querySelectorAll(".step");
+  const warning = step[1].querySelector(".warning");
+
+  warning.textContent = "";
+
+  if (nValue.value < rusAlpha.length) {
+    warning.textContent = "n должно быть больше размера алфавита";
+    return false;
+  }
+
   return true;
 }
 
@@ -247,9 +262,10 @@ function getValueD() {
 }
 
 function solveFirst() {
-  if (pEquelQ()) return;
+  if (!pEquelQ()) return;
   nValue.value = getValueN();
   phiValue.value = getValuePhi();
+  if (!alphabetSize()) return;
   gcdArray = isGcdArray(phiValue.value);
   getValueD();
 
@@ -257,7 +273,7 @@ function solveFirst() {
 }
 
 function solveSecond() {
-  if (pEquelQ()) return;
+  if (!pEquelQ()) return;
 
   eValue.value = modInverse(dValue.value, phiValue.value);
   publicKey.value = `{${eValue.value}; ${nValue.value}}`;
@@ -277,7 +293,7 @@ dValue.addEventListener("change", (e) => {
 });
 
 encryptButton.addEventListener("click", (e) => {
-  if (pEquelQ()) return;
+  if (!pEquelQ()) return;
   if (encryptInput.value.trim() === "") return;
   encryptIteration.innerHTML = "";
   encryptResult.value = encryptOperation(
@@ -288,7 +304,7 @@ encryptButton.addEventListener("click", (e) => {
 });
 
 dencryptButton.addEventListener("click", (e) => {
-  if (pEquelQ()) return;
+  if (!pEquelQ()) return;
   if (dencryptInput.value.trim() === "") return;
   dencryptIteration.innerHTML = "";
   dencryptResult.value = dencryptOperation(

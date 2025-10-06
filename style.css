@@ -80,10 +80,6 @@ body {
   color: rgb(160, 0, 0);
 }
 
-.visible {
-  display: none;
-}
-
 h1 {
   height: 20vh;
   display: flex;
